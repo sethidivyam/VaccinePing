@@ -20,19 +20,14 @@ Voice announcement (using pyttsx3)
 
 🛠 Requirements
 Install the following Python packages before running the script:
-
-bash
-Copy
-Edit
 pip install requests pyautogui pyttsx3
+
 📂 Project Structure
-bash
-Copy
-Edit
 cowin-vaccine/
 │
 ├── cowin_vaccine.py       # Main script
 └── README.md              # Project documentation
+
 ⚙️ Configuration
 Edit the following variables in cowin_vaccine.py to customize:
 
