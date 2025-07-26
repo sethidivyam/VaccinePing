@@ -1,74 +1,106 @@
-# VaccinePing
-A smart alert system using the CoWIN API to track and notify users about COVID-19 vaccine slot availability in real time. Users can set preferences like age, pin code, or district, and receive instant alerts via email, SMS, or app notifications as soon as slots open up.
+# 💉 VaccinePing – CoWIN Vaccine Slot Notifier
 
+**VaccinePing** is a real-time alert system that checks COVID-19 vaccine slot availability using the CoWIN public API and notifies the user via **WhatsApp Web** and **voice alerts**.
 
-💉 CoWIN Vaccine Slot Notifier
-A simple Python script that uses the official CoWIN API to check for COVID-19 vaccine slot availability and send real-time alerts via WhatsApp and voice notification when a slot is found.
+---
 
-🚀 Features
-🔍 Checks vaccine slot availability by pincode
+## 🚀 Features
 
-📅 Filters by age group and vaccine type (e.g., COVAXIN)
+- 🔍 Check slot availability using PIN codes
+- 📅 Filter by age and vaccine type (e.g., COVAXIN)
+- 📢 Notifications through:
+  - WhatsApp Web (prefilled alert message)
+  - Voice alert using `pyttsx3`
+- 🔁 Automatically refreshes every few seconds
 
-📢 Sends alerts via:
+---
 
-WhatsApp Web
+## 🛠 Requirements
 
-Voice announcement (using pyttsx3)
+Install required Python packages:
 
-🔁 Continuously checks every few seconds
-
-🛠 Requirements
-Install the following Python packages before running the script:
+```bash
 pip install requests pyautogui pyttsx3
+```
 
-📂 Project Structure
-cowin-vaccine/
-│
-├── cowin_vaccine.py       # Main script
-└── README.md              # Project documentation
+---
 
-⚙️ Configuration
-Edit the following variables in cowin_vaccine.py to customize:
+## 📂 Project Structure
 
-python
-Copy
-Edit
-date_int = '3-1-2022'  # Date of slot checking (format: DD-MM-YYYY)
-age = 17               # Minimum age of recipient
-pincode_list = [110009, 110006, 110084, 110085, 110088]  # List of pincodes
-phone_list = ['+919911713714']  # WhatsApp numbers to send alert to
-🧠 How It Works
-Sends requests to CoWIN API’s calendarByPin endpoint.
+```
+vaccineping/
+├── cowin_vaccine.py     # Main script
+└── README.md            # Documentation
+```
 
-Parses the JSON response for centers with:
+---
 
-Available dose 1 slots
+## ⚙️ Configuration
 
-Vaccine type = "COVAXIN"
+Open `cowin_vaccine.py` and customize the following:
 
-Age eligibility
+```python
+date_int = '3-1-2022'  # Format: DD-MM-YYYY
+age = 17  # Minimum eligible age
+pincode_list = [110009, 110006, 110084, 110085, 110088]  # Pincodes to monitor
+phone_list = ['+919911713714']  # WhatsApp numbers to notify
+```
 
-If found, it:
+---
 
-Opens WhatsApp Web with a prefilled message
+## 🧠 How It Works
 
-Uses pyttsx3 to give a voice alert
+1. Sends GET request to CoWIN API’s `calendarByPin` endpoint.
+2. Filters for sessions with:
+   - Available first dose slots
+   - Matching vaccine type (e.g., COVAXIN)
+   - Age eligibility
+3. On availability:
+   - Opens WhatsApp Web with pre-filled message
+   - Speaks the alert using `pyttsx3`
+   - Simulates "enter" key to send message
+4. Repeats the check every few seconds
 
-Waits before sending the next alert
+---
 
-🛑 Disclaimer
-This tool is for educational and personal use only.
+## 🖥️ Example Output
 
-Do not spam the CoWIN API or misuse WhatsApp automation.
+```
+Available: 15 slots
+District: North Delhi
+Pincode: 110009
 
-Ensure you're following CoWIN API terms.
+[WhatsApp opened, voice alert triggered]
+```
 
-📬 Future Enhancements
-Email or Telegram alerts
+---
 
-GUI interface with Flutter or Tkinter
+## 🧾 Disclaimer
 
-Slot history tracking
+- This project is for **educational/personal** use only.
+- Do **not spam** the CoWIN API.
+- Use **WhatsApp Web automation** responsibly.
+- Respect CoWIN and WhatsApp terms of service.
 
-OTP-based auto-booking (with user interaction)
+---
+
+## 🔮 Future Enhancements
+
+- 📬 Email or Telegram alerts
+- 🖼 GUI with Flutter/Tkinter
+- 📊 Slot history and logging
+- 🔐 OTP-based assisted booking (manual flow)
+
+---
+
+## 👨‍💻 Author
+
+**Divyam Sethi**  
+🔗 [LinkedIn](https://www.linkedin.com/in/divyam-sethi-3a5141232)  
+📧 [Email](mailto:divyamsethi1804@gmail.com)
+
+---
+
+## ⭐️ Support
+
+If you found this project helpful, please consider giving it a ⭐ on GitHub and sharing it!
