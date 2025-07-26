@@ -43,7 +43,7 @@ Open `cowin_vaccine.py` and customize the following:
 date_int = '3-1-2022'  # Format: DD-MM-YYYY
 age = 17  # Minimum eligible age
 pincode_list = [110009, 110006, 110084, 110085, 110088]  # Pincodes to monitor
-phone_list = ['+919911713714']  # WhatsApp numbers to notify
+phone_list = ['+919876543210']  # WhatsApp numbers to notify
 ```
 
 ---
